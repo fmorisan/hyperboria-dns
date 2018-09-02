@@ -1,0 +1,47 @@
+2018-09-02T17:04:47-0300 [-] Loading ethdns.py...
+2018-09-02T17:04:47-0300 [-] Loaded.
+2018-09-02T17:04:47-0300 [twisted.scripts._twistd_unix.UnixAppLogger#info] twistd 18.7.0 (/home/mori/.local/share/virtualenvs/dns-ABNCzcJk/bin/python 3.7.0) starting up.
+2018-09-02T17:04:47-0300 [twisted.scripts._twistd_unix.UnixAppLogger#info] reactor class: twisted.internet.epollreactor.EPollReactor.
+2018-09-02T17:04:47-0300 [-] DNSServerFactory starting on 5300
+2018-09-02T17:04:47-0300 [-] DNSDatagramProtocol starting on 5300
+2018-09-02T17:05:01-0300 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 57441
+2018-09-02T17:05:01-0300 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32979710>
+2018-09-02T17:05:01-0300 [-] (UDP Port 57441 Closed)
+2018-09-02T17:05:01-0300 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32979710>
+2018-09-02T17:05:30-0300 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 60092
+2018-09-02T17:05:30-0300 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32be2d30>
+2018-09-02T17:05:30-0300 [-] (UDP Port 60092 Closed)
+2018-09-02T17:05:30-0300 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32be2d30>
+2018-09-02T17:06:00-0300 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 12982
+2018-09-02T17:06:00-0300 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32bf0da0>
+2018-09-02T17:06:00-0300 [-] (UDP Port 12982 Closed)
+2018-09-02T17:06:00-0300 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32bf0da0>
+2018-09-02T17:06:01-0300 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 30948
+2018-09-02T17:06:01-0300 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda372c8550>
+2018-09-02T17:06:01-0300 [-] (UDP Port 30948 Closed)
+2018-09-02T17:06:01-0300 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda372c8550>
+2018-09-02T17:06:02-0300 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 36764
+2018-09-02T17:06:02-0300 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32be2d30>
+2018-09-02T17:06:02-0300 [-] (UDP Port 36764 Closed)
+2018-09-02T17:06:02-0300 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fda32be2d30>
+2018-09-02T17:08:49-0300 [-] Loading ethdns.py...
+2018-09-02T17:08:50-0300 [-] Loaded.
+2018-09-02T17:08:50-0300 [twisted.scripts._twistd_unix.UnixAppLogger#info] twistd 18.7.0 (/home/mori/.local/share/virtualenvs/dns-ABNCzcJk/bin/python 3.7.0) starting up.
+2018-09-02T17:08:50-0300 [twisted.scripts._twistd_unix.UnixAppLogger#info] reactor class: twisted.internet.epollreactor.EPollReactor.
+2018-09-02T17:08:50-0300 [-] DNSServerFactory starting on 5300
+2018-09-02T17:08:50-0300 [-] DNSDatagramProtocol starting on 5300
+2018-09-02T17:08:59-0300 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 18095
+2018-09-02T17:08:59-0300 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fefaf88ef60>
+2018-09-02T17:08:59-0300 [-] (UDP Port 18095 Closed)
+2018-09-02T17:08:59-0300 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fefaf88ef60>
+2018-09-02T17:12:45-0300 [-] Removing stale pidfile /home/mori/git/personal/dns/twistd.pid
+2018-09-02T17:12:45-0300 [-] Loading ethdns.py...
+2018-09-02T17:12:45-0300 [-] Loaded.
+2018-09-02T17:12:45-0300 [twisted.scripts._twistd_unix.UnixAppLogger#info] twistd 18.7.0 (/home/mori/.local/share/virtualenvs/dns-ABNCzcJk/bin/python 3.7.0) starting up.
+2018-09-02T17:12:45-0300 [twisted.scripts._twistd_unix.UnixAppLogger#info] reactor class: twisted.internet.epollreactor.EPollReactor.
+2018-09-02T17:12:45-0300 [-] DNSServerFactory starting on 5300
+2018-09-02T17:12:45-0300 [-] DNSDatagramProtocol starting on 5300
+2018-09-02T17:12:49-0300 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 62553
+2018-09-02T17:12:49-0300 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f13f6c8c160>
+2018-09-02T17:12:49-0300 [-] (UDP Port 62553 Closed)
+2018-09-02T17:12:49-0300 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f13f6c8c160>
