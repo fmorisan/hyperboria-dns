@@ -1,6 +1,7 @@
 import sys
 import json
 import time
+import ipaddress
 
 from web3 import Web3
 
@@ -52,6 +53,12 @@ class MapResolver(BaseResolver):
                         break
                     ip = ip_data[0]
         if ip:
+            try:
+                ipaddress.ip_address(ip)
+            except Exception as exc:
+                print(repr(exc))
+                return reply
+
             print("Name {} found: ip is {}".format('.'.join(labels), ip))
             reply.add_answer(RR(qname, QTYPE.AAAA, ttl=1, rdata=AAAA(ip)))
             mapping[labels_hash] = ip
@@ -65,9 +72,7 @@ class MapResolver(BaseResolver):
 ethresolver = MapResolver()
 
 if __name__ == '__main__':
-    udp_server = DNSServer(ethresolver,
-                       port=53,
-                       address='0.0.0.0')
+    udp_server = DNSServer(ethresolver, port=5353, address='0.0.0.0')
     udp_server.start()
     # udp_server.start_thread()
     # udp_server.thread.join()
