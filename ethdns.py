@@ -1,6 +1,7 @@
 import sys
 import json
 import time
+import logging
 
 from web3 import Web3
 
@@ -16,6 +17,36 @@ w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/b3a8ec552d49493d853d3c
 
 mapping = {}
 
+def eth_resolve(labels):
+    contract = w3.eth.contract(address=ROOT_RESOLVER_ADDRESS, abi=ABI)
+    logging.info('resolving {}'.format(labels))
+    ip = None
+    labels_hash = SHA256.new()
+    for label in labels:
+        labels_hash.update(label.encode('ascii'))
+    labels_hash = labels_hash.digest()
+    if labels_hash in mapping:
+        ip = mapping[labels_hash]
+    elif labels[len(labels)-1] == 'hyperboria':
+        while not ip:
+            if labels:
+                label = str(labels.pop())
+            elif label:
+                label = '.'
+            else:
+                break
+            if contract.functions.useResolver(_subdomain=label).call():
+                new_address = contract.functions.getResolver(_subdomain=label).call()[0]
+                print('redirecting query to address {}'.format(new_address))
+                contract = w3.eth.contract(address=new_address, abi=ABI)
+            else:
+                ip_data = contract.functions.resolveName(_subdomain=label).call()
+                if not ip_data[2]:
+                    break
+                ip = ip_data[0]
+    return ip
+
+
 class MapResolver(BaseResolver):
     """
     Resolves names by looking in a mapping. 
@@ -23,34 +54,10 @@ class MapResolver(BaseResolver):
     else the next server in servers will be asked for name    
     """
     def resolve(self, request, handler):
-        contract = w3.eth.contract(address=ROOT_RESOLVER_ADDRESS, abi=ABI)
         qname = request.q.qname
         labels = [ label.decode('ascii') for label in qname.label ]
         reply = request.reply()
-        ip = None
-        labels_hash = SHA256.new()
-        for label in labels:
-            labels_hash.update(label.encode('ascii'))
-        labels_hash = labels_hash.digest()
-        if labels_hash in mapping:
-            ip = mapping[labels_hash]
-        elif labels[len(labels)-1] == 'hyperboria':
-            while not ip:
-                if labels:
-                    label = str(labels.pop())
-                elif label:
-                    label = '.'
-                else:
-                    break
-                if contract.functions.useResolver(_subdomain=label).call():
-                    new_address = contract.functions.getResolver(_subdomain=label).call()[0]
-                    print('redirecting query to address {}'.format(new_address))
-                    contract = w3.eth.contract(address=new_address, abi=ABI)
-                else:
-                    ip_data = contract.functions.resolveName(_subdomain=label).call()
-                    if not ip_data[2]:
-                        break
-                    ip = ip_data[0]
+        ip = eth_resolve(labels)
         if ip:
             print("Name {} found: ip is {}".format('.'.join(labels), ip))
             reply.add_answer(RR(qname, QTYPE.AAAA, ttl=1, rdata=AAAA(ip)))
@@ -61,7 +68,23 @@ class MapResolver(BaseResolver):
             return DNSRecord.parse(proxy_r)
 
 
-# set up a resolver that uses the mapping or a secondary nameserver
+
+    def get_response(self, data, use_udp=False):
+        request = DNSRecord.parse(data)
+
+        reply = resolve.resolve(request,self)
+
+        if use_udp:
+            rdata = reply.pack()
+            if self.udplen and len(rdata) > self.udplen:
+                truncated_reply = reply.truncate()
+                rdata = truncated_reply.pack()
+                self.server.logger.log_truncated(self,truncated_reply)
+        else:
+            rdata = reply.pack()
+
+        return rdata
+
 ethresolver = MapResolver()
 
 if __name__ == '__main__':

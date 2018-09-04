@@ -1,0 +1,45 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+attrdict = "*"
+attrs = "*"
+automat = "*"
+certifi = "*"
+chardet = "*"
+constantly = "*"
+cytoolz = "*"
+dnslib = "*"
+eth-abi = "*"
+eth-account = "*"
+eth-hash = "*"
+eth-keyfile = "*"
+eth-keys = "*"
+eth-rlp = "*"
+eth-typing = "*"
+eth-utils = "*"
+hexbytes = "*"
+hyperlink = "*"
+idna = "*"
+incremental = "*"
+lru-dict = "*"
+parsimonious = "*"
+pycryptodome = "*"
+pyhamcrest = "*"
+"pysha3" = "*"
+requests = "*"
+rlp = "*"
+six = "*"
+toolz = "*"
+twisted = "*"
+"urllib3" = "*"
+"web3" = "*"
+websockets = "*"
+"zope.interface" = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
