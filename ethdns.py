@@ -5,7 +5,7 @@ import ipaddress
 
 from web3 import Web3
 
-from dnslib import RR, QTYPE, AAAA, DNSRecord
+from dnslib import RR, QTYPE, AAAA, RCODE, DNSRecord
 from dnslib.server import DNSServer, BaseResolver
 from Crypto.Hash import SHA256
 
@@ -102,6 +102,7 @@ class MapResolver(BaseResolver):
                 ipaddress.ip_address(ip)
             except Exception as exc:
                 print(repr(exc))
+                reply.header.rcode = RCODE.NXDOMAIN
                 return reply
 
             print("Name {} found: ip is {}".format('.'.join(labels), ip))
